@@ -1,35 +1,106 @@
-# Invera ToDo-List Challenge (Python/Django Jr-SSr)
+# Invera Challenge de tareas
+Chellenge realizado para invera, descripcion de lo pedido:
+* [https://github.com/LeoLeiva/todo-challenge/docs/README.md](https://github.com/LeoLeiva/todo-challenge/docs/README.md) <== Link al README.md
 
-El propósito de esta prueba es conocer tu capacidad para crear una pequeña aplicación funcional en un límite de tiempo. A continuación, encontrarás las funciones, los requisitos y los puntos clave que debés tener en cuenta durante el desarrollo.
+Tecnologias usadas:
+  * Python 
+  * Django
+  * Html + Css + Js + Bootstrap
+  * Virtualenv
+  * Docker
+  
+Paquetes usados:
+  * Django Rest Framework
+  * django-userforeignkey
+  * gunicorn
+  * psycopg2
 
-## Qué queremos que hagas:
+---
 
-- El Challenge consiste en crear una aplicación web sencilla que permita a los usuarios crear y mantener una lista de tareas.
-- La entrega del resultado será en un nuevo fork de este repo y deberás hacer una pequeña demo del funcionamiento y desarrollo del proyecto ante un super comité de las más grandes mentes maestras de Invera, o a un par de devs, lo que sea más fácil de conseguir.
-- Podes contactarnos en caso que tengas alguna consulta.
+## Iniciando el proyecto
+Primero tenemos que tener instalado python 3 verificamos la version con ==>python --version e instalamos virtualenv para el entorno,
+```sh
+$ python --version
+$ pip install virtualenv
+```
+_En el caso de tener python 2 cuando instalemos los repositorios se debera instalar con pip3 y correr con python3_
 
-## Objetivos:
+Creamos el entorno virtual y lo activamos:
+```sh
+$ virtualenv venv
+$ source venv/bin/activate
+```
 
-El usuario de la aplicación tiene que ser capaz de:
+En el caso de tener windows, para activar el entorno cirtual:
+```sh
+$ python -m venv venv
+$ .\venv\scripts\activate
+```
 
-- Crear una tarea
-- Eliminar una tarea
-- Marcar tareas como completadas
-- Poder ver una lista de todas las tareas existentes
-- Filtrar/buscar tareas por fecha de creación y/o por el contenido de la misma
+Clonamos el proyecto:
+```sh
+$ git clone https://github.com/LeoLeiva/todo-challenge.git
+```
 
-## Qué evaluamos:
+Ingresamos a la carpeta de la aplicacion
+```sh
+$ cd todo-challenge
+$ cd invera
+```
 
-- Desarrollo utilizando Python, Django. No es necesario crear un Front-End, pero sí es necesario tener una API que permita cumplir con los objetivos de arriba.
-- Calidad y arquitectura de código. Facilidad de lectura y mantenimiento del código. Estándares seguidos.
-- [Bonus] Manejo de logs.
-- [Bonus] Creación de tests (unitarias y de integración)
-- [Bonus] Unificar la solución propuesta en una imagen de Docker por repositorio para poder ser ejecutada en cualquier ambiente (si aplica para full stack).
+Instalamos los paquetes del proyecto:
+```sh
+$ pip install -r ../requirements.txt
+```
+==>Como el requeriments esta en la carpeta todo challenge se agrega ../requeriments.txt
 
-## Requerimientos de entrega:
+Hacemos el migrate para crear la base de datos:
+```sh
+$ python manage.py migrate
+```
 
-- Hacer un fork del proyecto y pushearlo en github. Puede ser privado.
-- La solución debe correr correctamente.
-- El Readme debe contener todas las instrucciones para poder levantar la aplicación, en caso de ser necesario, y explicar cómo se usa.
-- Disponibilidad para realizar una pequeña demo del proyecto al finalizar el challenge.
-- Tiempo para la entrega: Aproximadamente 7 días.
+Ya esta listo para ejecutar la aplicacion:
+```sh
+$ python manage.py runserver
+```
+
+Para ingresar
+* [http://localhost:8000/](http://localhost:8000/) - Para el FronEnd
+* [http://localhost:8000/api/task/](http://localhost:8000/api/task/) - Para utilizar la API
+
+Para correr los test:
+```sh
+$ python manage.py test
+```
+
+Para correr de forma inversa:
+```sh
+$ python manage.py test --reverse
+```
+
+---
+
+## En el caso de querer utilizar Docker
+_Necesitamos tener instalado Docker y docker-compose_
+
+Desde la carpeta todo-challenge hacemos la migracion para que se cree la base de datos y collectstatic para las imagenes:
+```sh
+$ docker-compose run django_app python invera/manage.py migrate
+$ docker-compose run django_app python invera/manage.py collectstatic
+```
+
+En el caso de querer crear un superuser para poder ver los logs:
+```sh
+$ docker-compose run django_app python invera/manage.py createsuperuser
+```
+
+Para ejecutarlo una ves que la app se haya construido:
+```sh
+$ docker-compose up --build
+```
+
+Para ingresar una vez que se haya construido:
+
+* [http://0.0.0.0:8000/](http://0.0.0.0:8000/) - Para el FronEnd
+* [http://0.0.0.0:8000/api/task/](http://0.0.0.0:8000/api/task/) - Para utilizar la API
+
