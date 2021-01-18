@@ -37,7 +37,7 @@ $ virtualenv -p /usr/bin/python3
 $ source venv/bin/activate
 ```
 
-En el caso de tener windows, para activar el entorno cirtual:
+En el caso de tener windows, para activar el entorno virtual:
 ```sh
 $ python -m venv venv
 $ .\venv\scripts\activate
