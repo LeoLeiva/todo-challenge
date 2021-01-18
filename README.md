@@ -1,6 +1,6 @@
 # Invera Challenge de tareas
 Chellenge realizado para invera, descripcion de lo pedido:
-* [https://github.com/LeoLeiva/todo-challenge/docs/README.md](https://github.com/LeoLeiva/todo-challenge/docs/README.md) <== Link al README.md
+* [https://github.com/LeoLeiva/todo-challenge/tree/main/docs](https://github.com/LeoLeiva/todo-challenge/tree/main/docs) <== Link al README.md
 
 Tecnologias usadas:
   * Python 
