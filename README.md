@@ -1,6 +1,6 @@
 # Invera Challenge de tareas
 Chellenge realizado para invera, descripcion de lo pedido:
-* [https://github.com/LeoLeiva/todo-challenge/docs/README.md](https://github.com/LeoLeiva/todo-challenge/docs/README.md) <== Link al README.md
+* [https://github.com/LeoLeiva/todo-challenge/tree/main/docs](https://github.com/LeoLeiva/todo-challenge/tree/main/docs) <== Link al README.md
 
 Tecnologias usadas:
   * Python 
@@ -31,7 +31,13 @@ $ virtualenv venv
 $ source venv/bin/activate
 ```
 
-En el caso de tener windows, para activar el entorno cirtual:
+Si tenemos python 2 y 3 en Linux podemos crear el entorno virtual solo con python 3:
+```sh
+$ virtualenv -p /usr/bin/python3
+$ source venv/bin/activate
+```
+
+En el caso de tener windows, para activar el entorno virtual:
 ```sh
 $ python -m venv venv
 $ .\venv\scripts\activate
@@ -53,6 +59,11 @@ Instalamos los paquetes del proyecto:
 $ pip install -r ../requirements.txt
 ```
 ==>Como el requeriments esta en la carpeta todo challenge se agrega ../requeriments.txt
+
+La app tiene configuracion para manejar sqlite3 o postgresql en docker, por lo tanto edite setting.py para elegir la bd:
+ * Para sqlite dejar como esta
+ * Para postgresql comentar desde la linea 99 a 105 de settings.py y descomentar desde 88 a 96
+ * Recuerde cambiar DEBUG = True por False en la linea 26
 
 Hacemos el migrate para crear la base de datos:
 ```sh
@@ -82,6 +93,9 @@ $ python manage.py test --reverse
 
 ## En el caso de querer utilizar Docker
 _Necesitamos tener instalado Docker y docker-compose_
+El docker esta preparado para usar postgresql, por lo tanto edite setting.py para elegir la bd:
+ * Comentar desde la linea 99 a 105 de settings.py y descomentar desde 88 a 96
+ * Recuerde cambiar DEBUG = True por False en la linea 26
 
 Desde la carpeta todo-challenge hacemos la migracion para que se cree la base de datos y collectstatic para las imagenes:
 ```sh
