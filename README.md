@@ -31,6 +31,12 @@ $ virtualenv venv
 $ source venv/bin/activate
 ```
 
+Si tenemos python 2 y 3 en Linux podemos crear el entorno virtual solo con python 3:
+```sh
+$ virtualenv -p /usr/bin/python3
+$ source venv/bin/activate
+```
+
 En el caso de tener windows, para activar el entorno cirtual:
 ```sh
 $ python -m venv venv
