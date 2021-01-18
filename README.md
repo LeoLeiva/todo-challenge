@@ -60,6 +60,11 @@ $ pip install -r ../requirements.txt
 ```
 ==>Como el requeriments esta en la carpeta todo challenge se agrega ../requeriments.txt
 
+La app tiene configuracion para manejar sqlite3 o postgresql en docker, por lo tanto edite setting.py para elegir la bd:
+ * Para sqlite dejar como esta
+ * Para postgresql comentar desde la linea 99 a 105 de settings.py y descomentar desde 88 a 96
+ * Recuerde cambiar DEBUG = True por False en la linea 26
+
 Hacemos el migrate para crear la base de datos:
 ```sh
 $ python manage.py migrate
