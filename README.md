@@ -93,6 +93,9 @@ $ python manage.py test --reverse
 
 ## En el caso de querer utilizar Docker
 _Necesitamos tener instalado Docker y docker-compose_
+El docker esta preparado para usar postgresql, por lo tanto edite setting.py para elegir la bd:
+ * Comentar desde la linea 99 a 105 de settings.py y descomentar desde 88 a 96
+ * Recuerde cambiar DEBUG = True por False en la linea 26
 
 Desde la carpeta todo-challenge hacemos la migracion para que se cree la base de datos y collectstatic para las imagenes:
 ```sh
